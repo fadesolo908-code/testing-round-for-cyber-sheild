@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Currency Exchange Calculator</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+            }
+            input, select, button {
+                margin: 10px;
+                padding: 10px;
+                font-size: 1em;
+            }
+            #exchange-result {
+                margin-top: 20px;
+                font-size: 1.2em;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Currency Exchange Calculator</h1>
+        <div>
+            <input type="number" id="exchange-amount" placeholder="Amount" min="0" step="any">
+            <select id="exchange-from">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+            </select>
+            <span>to</span>
+            <select id="exchange-to">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+            </select>
+            <button onclick="calculateExchange()">Convert</button>
+            <div id="exchange-result"></div>
+        </div>
+        <nav>
+            <a href="Untitled-1.html">Home</a>
+            <a href="index.html">Crypto Price</a>
+            <a href="index3.html">Currency Exchange Calculator</a>
+        </nav>
+        <script>
+            // Currency exchange rates (example, not live)
+            const exchangeRates = {
+                USD: { USD: 1, EUR: 0.92, BTC: 0.000016, ETH: 0.00025 },
+                EUR: { USD: 1.09, EUR: 1, BTC: 0.000017, ETH: 0.00027 },
+                BTC: { USD: 63000, EUR: 58000, BTC: 1, ETH: 15.5 },
+                ETH: { USD: 4000, EUR: 3700, BTC: 0.0645, ETH: 1 }
+            };
+
+            function calculateExchange() {
+                try {
+                    const amount = parseFloat(document.getElementById('exchange-amount').value);
+                    const from = document.getElementById('exchange-from').value;
+                    const to = document.getElementById('exchange-to').value;
+                    if (isNaN(amount) || amount <= 0) {
+                        document.getElementById('exchange-result').textContent = "Enter a valid amount.";
+                        return;
+                    }
+                    const rate = exchangeRates[from][to];
+                    if (!rate) {
+                        document.getElementById('exchange-result').textContent = "Exchange rate not available.";
+                        return;
+                    }
+                    const result = amount * rate;
+                    document.getElementById('exchange-result').textContent = `${amount} ${from} = ${result.toFixed(6)} ${to}`;
+                } catch (e) {
+                    document.getElementById('exchange-result').textContent = "Error calculating exchange.";
+                    console.error("Error in calculateExchange:", e);
+                }
+            }
+        </script>
+    </body>
+</html>

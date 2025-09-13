@@ -1,0 +1,46 @@
+<!-- Main entry point for Crypto Tracker GitHub project (alternate copy) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Crypto Tracker</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #crypto-price {
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crypto Price Tracker</h1>
+    <nav style="text-align:center;margin:20px 0;">
+        <a href="index2.html">Trading Tips</a>
+        <a href="Untitled-1.html">Home</a>
+        <a href="index3.html">Currency Rate</a>
+    </nav>
+    <input type="text" id="search" placeholder="Search cryptocurrency..." style="margin-bottom:20px;">
+    <button id="theme-toggle">Dark Mode</button>
+    <table style="margin: 0 auto; width: 80%;" border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Price</th>
+                <th>Market Cap</th>
+            </tr>
+        </thead>
+        <tbody id="crypto-table">
+            <!-- Crypto data will be injected here -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
+
